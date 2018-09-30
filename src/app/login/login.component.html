@@ -1,0 +1,28 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
+    
+  <!--USERNAME-->
+    <p>Username:</p>
+    <input id="username" type="text" [formControl]="loginForm.controls['username']" placeholder="Enter Username" required>
+    <div *ngIf="loginForm.controls.username.touched && loginForm.controls.username.errors?.required">
+        Username must be filled out
+    </div>
+    <div *ngIf="loginForm.controls.username.dirty && loginForm.controls.username.errors?.minlength">
+        Username must be 5 characters
+    </div>
+
+    <!--PASSWORD-->
+    <label>Password:</label>
+    <input id="password" type="password" [formControl]="loginForm.controls['password']">
+    <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.required">
+        Password must be filled out
+    </div>
+
+    <!--REMEMEMBER ME?-->
+    <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+    
+    <!--SUBMIT BTN-->
+    <br />
+    <button id="btnLogin">Login</button>
+</form>
